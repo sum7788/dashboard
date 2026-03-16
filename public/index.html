@@ -18,17 +18,14 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden;}
 
-/* TICKER */
 .ticker-bar{background:var(--bg2);border-bottom:1px solid var(--border);overflow:hidden;height:36px;position:sticky;top:0;z-index:100;}
 .ticker-track{display:flex;animation:ticker 60s linear infinite;white-space:nowrap;height:100%;align-items:center;}
 .ticker-track:hover{animation-play-state:paused;}
 .ticker-item{display:inline-flex;align-items:center;gap:6px;padding:0 24px;font-family:var(--mono);font-size:11.5px;border-right:1px solid var(--border);height:100%;}
-.ticker-item .sym{color:var(--text2);}
-.ticker-item .val{color:var(--text);font-weight:500;}
+.ticker-item .sym{color:var(--text2);} .ticker-item .val{color:var(--text);font-weight:500;}
 .up{color:var(--green);} .dn{color:var(--red);}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* HEADER */
 header{padding:20px 40px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
 .logo{display:flex;align-items:center;gap:14px;}
 .logo img{height:52px;width:auto;}
@@ -40,22 +37,18 @@ header{padding:20px 40px;border-bottom:1px solid var(--border);display:flex;alig
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 .timestamp{font-family:var(--mono);font-size:11px;color:var(--text3);}
 
-/* MAIN */
 main{max-width:1440px;margin:0 auto;padding:28px 40px 80px;}
 
-/* SECTION */
 .section{margin-bottom:44px;}
 .section-header{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--border);}
 .section-title{font-size:13px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--text2);font-family:var(--mono);}
 .section-line{flex:1;height:1px;background:linear-gradient(to right,var(--border2),transparent);}
 
-/* GRIDS */
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 @media(max-width:1000px){.grid-3{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:680px){.grid-2,.grid-3{grid-template-columns:1fr;}main{padding:16px 16px 60px;}header{padding:16px;}}
 
-/* CARD */
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s;}
 .card:hover{border-color:var(--border2);}
 .card-header{padding:13px 16px 11px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
@@ -63,13 +56,20 @@ main{max-width:1440px;margin:0 auto;padding:28px 40px 80px;}
 .card-sub{font-size:10px;color:var(--text3);font-family:var(--mono);margin-top:2px;}
 .card-badge{font-size:9px;font-family:var(--mono);padding:2px 7px;border-radius:4px;background:var(--bg3);color:var(--text2);border:1px solid var(--border);}
 
-/* CHART AREA */
-.chart-area{padding:16px;height:220px;position:relative;}
-.chart-price{font-family:var(--mono);font-size:22px;font-weight:600;margin-bottom:2px;}
-.chart-chg{font-family:var(--mono);font-size:12px;margin-bottom:12px;}
+/* 차트 영역 */
+.chart-area{padding:14px 16px 10px;}
+.chart-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;}
+.chart-price{font-family:var(--mono);font-size:20px;font-weight:600;}
+.chart-chg{font-family:var(--mono);font-size:12px;margin-top:2px;}
+
+/* 기간 탭 */
+.range-tabs{display:flex;gap:4px;}
+.range-tab{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;transition:all .15s;}
+.range-tab:hover{color:var(--text2);border-color:var(--border2);}
+.range-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+
 .chart-canvas-wrap{height:130px;position:relative;}
 
-/* DRAWDOWN BAR */
 .dd-panel{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;background:var(--bg3);border-top:1px solid var(--border);gap:8px;}
 .dd-label{font-family:var(--mono);font-size:10px;color:var(--text3);white-space:nowrap;}
 .dd-bar-wrap{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
@@ -79,13 +79,8 @@ main{max-width:1440px;margin:0 auto;padding:28px 40px 80px;}
 .dd-value.ok{color:var(--green);} .dd-value.warn{color:var(--yellow);} .dd-value.danger{color:var(--red);}
 .dd-status{font-size:9px;font-family:var(--mono);color:var(--text3);white-space:nowrap;}
 
-/* LOADING */
-.loading{display:flex;align-items:center;justify-content:center;height:100%;color:var(--text3);font-family:var(--mono);font-size:11px;}
-
-/* TAPE */
 .tape-wrap{border-radius:10px;overflow:hidden;border:1px solid var(--border);margin-bottom:24px;height:56px;}
 
-/* NDX TABLE */
 .ndx-table{width:100%;border-collapse:collapse;}
 .ndx-table th{padding:9px 14px;font-size:10px;font-family:var(--mono);color:var(--text3);text-align:left;border-bottom:1px solid var(--border);font-weight:500;}
 .ndx-table th.r{text-align:right;}
@@ -96,10 +91,6 @@ main{max-width:1440px;margin:0 auto;padding:28px 40px 80px;}
 .sym-tag{font-family:var(--mono);font-weight:600;color:var(--accent2);font-size:12px;}
 .sym-name{font-size:11px;color:var(--text2);margin-top:1px;}
 
-/* API BTN */
-#api-btn{position:fixed;bottom:20px;right:20px;z-index:9999;padding:10px 16px;border-radius:8px;font-family:var(--mono);font-size:12px;cursor:pointer;color:#fff;border:1px solid var(--border2);box-shadow:0 4px 12px rgba(0,0,0,.5);}
-
-/* FOOTER */
 footer{border-top:1px solid var(--border);padding:20px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
 footer p{font-size:11px;color:var(--text3);font-family:var(--mono);}
 footer a{color:var(--text2);text-decoration:none;}
@@ -148,15 +139,20 @@ footer a{color:var(--text2);text-decoration:none;}
     <span>📊</span><span class="section-title">글로벌 자산</span><div class="section-line"></div>
   </div>
   <div class="grid-2" style="margin-bottom:16px">
-    <div class="card" id="card-sp500">
+    <div class="card">
       <div class="card-header">
         <div><div class="card-title">S&P 500</div><div class="card-sub">^GSPC · Yahoo Finance</div></div>
         <span class="card-badge">미국 대형주</span>
       </div>
       <div class="card-body">
         <div class="chart-area">
-          <div class="chart-price" id="price-sp500">—</div>
-          <div class="chart-chg" id="chg-sp500">로딩 중...</div>
+          <div class="chart-top">
+            <div>
+              <div class="chart-price" id="price-sp500">—</div>
+              <div class="chart-chg" id="chg-sp500">로딩 중...</div>
+            </div>
+            <div class="range-tabs" id="tabs-sp500"></div>
+          </div>
           <div class="chart-canvas-wrap"><canvas id="canvas-sp500"></canvas></div>
         </div>
         <div class="dd-panel">
@@ -167,15 +163,20 @@ footer a{color:var(--text2);text-decoration:none;}
         </div>
       </div>
     </div>
-    <div class="card" id="card-ndx">
+    <div class="card">
       <div class="card-header">
         <div><div class="card-title">나스닥 100</div><div class="card-sub">^IXIC · Yahoo Finance</div></div>
         <span class="card-badge">기술주</span>
       </div>
       <div class="card-body">
         <div class="chart-area">
-          <div class="chart-price" id="price-ndx">—</div>
-          <div class="chart-chg" id="chg-ndx">로딩 중...</div>
+          <div class="chart-top">
+            <div>
+              <div class="chart-price" id="price-ndx">—</div>
+              <div class="chart-chg" id="chg-ndx">로딩 중...</div>
+            </div>
+            <div class="range-tabs" id="tabs-ndx"></div>
+          </div>
           <div class="chart-canvas-wrap"><canvas id="canvas-ndx"></canvas></div>
         </div>
         <div class="dd-panel">
@@ -195,8 +196,13 @@ footer a{color:var(--text2);text-decoration:none;}
       </div>
       <div class="card-body">
         <div class="chart-area">
-          <div class="chart-price" id="price-gold">—</div>
-          <div class="chart-chg" id="chg-gold">로딩 중...</div>
+          <div class="chart-top">
+            <div>
+              <div class="chart-price" id="price-gold">—</div>
+              <div class="chart-chg" id="chg-gold">로딩 중...</div>
+            </div>
+            <div class="range-tabs" id="tabs-gold"></div>
+          </div>
           <div class="chart-canvas-wrap"><canvas id="canvas-gold"></canvas></div>
         </div>
         <div class="dd-panel">
@@ -214,8 +220,13 @@ footer a{color:var(--text2);text-decoration:none;}
       </div>
       <div class="card-body">
         <div class="chart-area">
-          <div class="chart-price" id="price-btc">—</div>
-          <div class="chart-chg" id="chg-btc">로딩 중...</div>
+          <div class="chart-top">
+            <div>
+              <div class="chart-price" id="price-btc">—</div>
+              <div class="chart-chg" id="chg-btc">로딩 중...</div>
+            </div>
+            <div class="range-tabs" id="tabs-btc"></div>
+          </div>
           <div class="chart-canvas-wrap"><canvas id="canvas-btc"></canvas></div>
         </div>
         <div class="dd-panel">
@@ -242,8 +253,13 @@ footer a{color:var(--text2);text-decoration:none;}
       </div>
       <div class="card-body">
         <div class="chart-area">
-          <div class="chart-price" id="price-kospi">—</div>
-          <div class="chart-chg" id="chg-kospi">로딩 중...</div>
+          <div class="chart-top">
+            <div>
+              <div class="chart-price" id="price-kospi">—</div>
+              <div class="chart-chg" id="chg-kospi">로딩 중...</div>
+            </div>
+            <div class="range-tabs" id="tabs-kospi"></div>
+          </div>
           <div class="chart-canvas-wrap"><canvas id="canvas-kospi"></canvas></div>
         </div>
         <div class="dd-panel">
@@ -261,8 +277,13 @@ footer a{color:var(--text2);text-decoration:none;}
       </div>
       <div class="card-body">
         <div class="chart-area">
-          <div class="chart-price" id="price-kosdaq">—</div>
-          <div class="chart-chg" id="chg-kosdaq">로딩 중...</div>
+          <div class="chart-top">
+            <div>
+              <div class="chart-price" id="price-kosdaq">—</div>
+              <div class="chart-chg" id="chg-kosdaq">로딩 중...</div>
+            </div>
+            <div class="range-tabs" id="tabs-kosdaq"></div>
+          </div>
           <div class="chart-canvas-wrap"><canvas id="canvas-kosdaq"></canvas></div>
         </div>
         <div class="dd-panel">
@@ -280,8 +301,13 @@ footer a{color:var(--text2);text-decoration:none;}
       </div>
       <div class="card-body">
         <div class="chart-area">
-          <div class="chart-price" id="price-krw">—</div>
-          <div class="chart-chg" id="chg-krw">로딩 중...</div>
+          <div class="chart-top">
+            <div>
+              <div class="chart-price" id="price-krw">—</div>
+              <div class="chart-chg" id="chg-krw">로딩 중...</div>
+            </div>
+            <div class="range-tabs" id="tabs-krw"></div>
+          </div>
           <div class="chart-canvas-wrap"><canvas id="canvas-krw"></canvas></div>
         </div>
         <div class="dd-panel">
@@ -370,7 +396,7 @@ footer a{color:var(--text2);text-decoration:none;}
 </main>
 
 <footer>
-  <p>데이터: Yahoo Finance · TradingView · Finnhub · 정보 제공 목적으로만 제공됩니다.</p>
+  <p>데이터: Yahoo Finance · TradingView · 정보 제공 목적으로만 제공됩니다.</p>
   <p><a href="https://finance.yahoo.com" target="_blank">Yahoo Finance</a> · <a href="https://kr.tradingview.com" target="_blank">TradingView</a></p>
 </footer>
 
@@ -397,15 +423,49 @@ updateClock(); setInterval(updateClock,1000);
   ).join('');
 })();
 
-// ── Yahoo Finance (Vercel API 프록시 경유) ──
-async function fetchYahoo(ticker, range='2y'){
-  const r = await fetch(`/api/yahoo?ticker=${encodeURIComponent(ticker)}&range=${range}`);
+// ── 기간 설정 ──
+const RANGES = [
+  {label:'3M', days:90},
+  {label:'6M', days:180},
+  {label:'1Y', days:365},
+  {label:'2Y', days:730},
+  {label:'3Y', days:1095},
+];
+
+// 각 카드의 현재 선택 기간 (기본 1Y)
+const activeRange = {};
+// 전체 데이터 캐시 (3Y치 한 번만 받아옴)
+const dataCache = {};
+// Chart 인스턴스
+const charts = {};
+
+// ── Yahoo Finance API (Vercel 프록시) ──
+async function fetchYahoo(ticker){
+  if(dataCache[ticker]) return dataCache[ticker];
+  const r = await fetch(`/api/yahoo?ticker=${encodeURIComponent(ticker)}&range=3y`);
   if(!r.ok) throw new Error('fetch failed');
-  return r.json();
+  const data = await r.json();
+  dataCache[ticker] = data;
+  return data;
 }
 
-// ── Chart.js 차트 그리기 ──
-const charts = {};
+// ── 기간에 맞게 데이터 자르기 ──
+function sliceByDays(timestamps, closes, days){
+  const cutoff = Date.now()/1000 - days*86400;
+  const idx = timestamps.findIndex(t => t >= cutoff);
+  if(idx === -1) return {dates:[], closes:[]};
+  const slicedT = timestamps.slice(idx);
+  const slicedC = closes.slice(idx);
+  const dates = slicedT.map(t=>{
+    const d=new Date(t*1000);
+    return days<=180
+      ? d.toLocaleDateString('ko-KR',{month:'2-digit',day:'2-digit'})
+      : d.toLocaleDateString('ko-KR',{year:'2-digit',month:'2-digit'});
+  });
+  return {dates, closes:slicedC};
+}
+
+// ── 차트 그리기 ──
 function drawChart(id, dates, closes, isUp){
   const ctx = document.getElementById('canvas-'+id);
   if(!ctx) return;
@@ -423,7 +483,7 @@ function drawChart(id, dates, closes, isUp){
         fill: true,
         backgroundColor: (ctx2)=>{
           const g = ctx2.chart.ctx.createLinearGradient(0,0,0,120);
-          g.addColorStop(0, color+'33');
+          g.addColorStop(0, color+'44');
           g.addColorStop(1, color+'00');
           return g;
         },
@@ -433,18 +493,19 @@ function drawChart(id, dates, closes, isUp){
     options:{
       responsive:true, maintainAspectRatio:false,
       plugins:{legend:{display:false},tooltip:{
-        callbacks:{label: ctx3=>' '+ctx3.parsed.y.toLocaleString('en-US',{maximumFractionDigits:2})}
+        callbacks:{label: c=>' '+c.parsed.y.toLocaleString('en-US',{maximumFractionDigits:2})}
       }},
       scales:{x:{display:false},y:{display:false}}
     }
   });
 }
 
-// ── 낙폭 계산 ──
+// ── 낙폭 렌더 (선택된 기간 기준) ──
 function ddClass(p){ return Math.abs(p)<5?'ok':Math.abs(p)<20?'warn':'danger'; }
 function ddText(p){ return Math.abs(p)<5?'🏔️ 강세장':Math.abs(p)<10?'⚠️ 주의':Math.abs(p)<20?'⚠️ 조정':'🐻 약세장'; }
 
 function renderDD(id, closes){
+  if(!closes.length) return;
   const cur = closes[closes.length-1];
   const peak = Math.max(...closes);
   const pct = ((cur-peak)/peak)*100;
@@ -456,42 +517,78 @@ function renderDD(id, closes){
   document.getElementById('dd-stat-'+id).textContent = ddText(pct);
 }
 
-function renderPrice(id, closes, currency=''){
+function renderPrice(id, closes, currency){
   const cur = closes[closes.length-1];
-  const prev = closes[closes.length-2] || cur;
+  const prev = closes[closes.length-2]||cur;
   const chgPct = ((cur-prev)/prev)*100;
   const isUp = chgPct >= 0;
-  const fmt = cur >= 1000
-    ? cur.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})
-    : cur.toFixed(2);
-  document.getElementById('price-'+id).textContent = currency + fmt;
+  const fmt = cur>=1000 ? cur.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) : cur.toFixed(2);
+  document.getElementById('price-'+id).textContent = currency+fmt;
   document.getElementById('chg-'+id).innerHTML =
     `<span class="${isUp?'up':'dn'}">${isUp?'▲':'▼'} ${Math.abs(chgPct).toFixed(2)}%</span>`;
   return isUp;
 }
 
+// ── 탭 렌더 & 클릭 처리 ──
+function renderTabs(id){
+  const wrap = document.getElementById('tabs-'+id);
+  if(!wrap) return;
+  wrap.innerHTML = RANGES.map(r=>
+    `<button class="range-tab ${activeRange[id]===r.days?'active':''}" onclick="switchRange('${id}',${r.days})">${r.label}</button>`
+  ).join('');
+}
+
+async function switchRange(id, days){
+  activeRange[id] = days;
+  renderTabs(id);
+  const a = ASSETS.find(x=>x.id===id);
+  if(!a || !dataCache[a.ticker]) return;
+  const result = dataCache[a.ticker]?.chart?.result?.[0];
+  if(!result) return;
+  const allCloses = result.indicators.quote[0].close;
+  const allTimestamps = result.timestamp;
+  // zip & filter nulls
+  const pairs = allTimestamps.map((t,i)=>([t, allCloses[i]])).filter(p=>p[1]!=null);
+  const timestamps = pairs.map(p=>p[0]);
+  const closes = pairs.map(p=>p[1]);
+  const {dates, closes:sliced} = sliceByDays(timestamps, closes, days);
+  const isUp = sliced[sliced.length-1] >= sliced[0];
+  drawChart(id, dates, sliced, isUp);
+  renderDD(id, sliced);
+}
+
 // ── 자산 목록 ──
 const ASSETS = [
-  {id:'sp500',  ticker:'^GSPC',   currency:'',      label:'S&P 500'},
-  {id:'ndx',    ticker:'^IXIC',   currency:'',      label:'나스닥'},
-  {id:'gold',   ticker:'GC=F',    currency:'$',     label:'금'},
-  {id:'btc',    ticker:'BTC-USD', currency:'$',     label:'BTC'},
-  {id:'kospi',  ticker:'^KS11',   currency:'',      label:'코스피'},
-  {id:'kosdaq', ticker:'^KQ11',   currency:'',      label:'코스닥'},
-  {id:'krw',    ticker:'KRW=X',   currency:'₩',     label:'원달러'},
+  {id:'sp500',  ticker:'^GSPC',   currency:'',  label:'S&P 500'},
+  {id:'ndx',    ticker:'^IXIC',   currency:'',  label:'나스닥'},
+  {id:'gold',   ticker:'GC=F',    currency:'$', label:'금'},
+  {id:'btc',    ticker:'BTC-USD', currency:'$', label:'BTC'},
+  {id:'kospi',  ticker:'^KS11',   currency:'',  label:'코스피'},
+  {id:'kosdaq', ticker:'^KQ11',   currency:'',  label:'코스닥'},
+  {id:'krw',    ticker:'KRW=X',   currency:'₩', label:'원달러'},
 ];
 
 async function loadAsset(a){
+  activeRange[a.id] = 365; // 기본 1Y
+  renderTabs(a.id);
   try{
-    const data = await fetchYahoo(a.ticker, '2y');
+    const data = await fetchYahoo(a.ticker);
     const result = data?.chart?.result?.[0];
     if(!result) return;
-    const closes = result.indicators.quote[0].close.filter(v=>v!=null);
-    const timestamps = result.timestamp;
-    const dates = timestamps.map(t=>new Date(t*1000).toLocaleDateString('ko-KR',{month:'2-digit',day:'2-digit'}));
+    const allCloses = result.indicators.quote[0].close;
+    const allTimestamps = result.timestamp;
+    const pairs = allTimestamps.map((t,i)=>([t,allCloses[i]])).filter(p=>p[1]!=null);
+    const timestamps = pairs.map(p=>p[0]);
+    const closes = pairs.map(p=>p[1]);
+
+    // 가격/등락은 항상 전체 기준
     const isUp = renderPrice(a.id, closes, a.currency);
-    drawChart(a.id, dates, closes, isUp);
-    renderDD(a.id, closes);
+
+    // 차트는 기본 1Y
+    const {dates, closes:sliced} = sliceByDays(timestamps, closes, 365);
+    drawChart(a.id, dates, sliced, isUp);
+    renderDD(a.id, sliced);
+    renderTabs(a.id);
   }catch(e){
     document.getElementById('chg-'+a.id).textContent = '데이터 오류';
     document.getElementById('dd-val-'+a.id).textContent = 'N/A';
@@ -507,26 +604,24 @@ const NDX10=[
 ];
 
 async function loadNdxRow(s){
-  const data = await fetchYahoo(s.s, '1y');
+  const data = await fetchYahoo(s.s);
   const result = data?.chart?.result?.[0];
   if(!result) return null;
   const closes = result.indicators.quote[0].close.filter(v=>v!=null);
-  const cur = closes[closes.length-1];
-  const prev = closes[closes.length-2]||cur;
-  const chgPct = ((cur-prev)/prev)*100;
-  const peak = Math.max(...closes);
-  const low = Math.min(...closes);
-  const dd = ((cur-peak)/peak)*100;
-  const pos = ((cur-low)/(peak-low))*100;
-  return {...s, cur, chgPct, peak, dd, pos};
+  const cur=closes[closes.length-1], prev=closes[closes.length-2]||cur;
+  const chgPct=((cur-prev)/prev)*100;
+  const peak=Math.max(...closes), low=Math.min(...closes);
+  const dd=((cur-peak)/peak)*100;
+  const pos=((cur-low)/(peak-low))*100;
+  return {...s,cur,chgPct,peak,dd,pos};
 }
 
 async function renderNdxTable(){
-  const tbody = document.getElementById('ndx-tbody');
-  const results = await Promise.all(NDX10.map(loadNdxRow));
+  const tbody=document.getElementById('ndx-tbody');
+  const results=await Promise.all(NDX10.map(loadNdxRow));
   let html='';
   results.forEach(d=>{
-    if(!d){ html+=`<tr><td colspan="6" style="color:var(--text3);text-align:center;font-size:11px">오류</td></tr>`; return; }
+    if(!d){html+=`<tr><td colspan="6" style="text-align:center;color:var(--text3);font-size:11px;padding:12px">오류</td></tr>`;return;}
     const up=d.chgPct>=0;
     const cur=d.cur>=1000?d.cur.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):d.cur.toFixed(2);
     const ddCls=ddClass(d.dd); const bc=up?'var(--green)':'var(--red)';
@@ -552,7 +647,7 @@ async function renderNdxTable(){
 // ── 초기 로드 ──
 ASSETS.forEach(loadAsset);
 renderNdxTable();
-setInterval(()=>{ ASSETS.forEach(loadAsset); renderNdxTable(); }, 5*60*1000);
+setInterval(()=>{ASSETS.forEach(loadAsset);renderNdxTable();}, 5*60*1000);
 </script>
 </body>
 </html>
