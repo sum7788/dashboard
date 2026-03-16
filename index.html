@@ -268,16 +268,20 @@ footer a{color:var(--text2);text-decoration:none;}
   </div>
   <div class="grid-3">
 
-    <!-- 코스피 - investing.com widget -->
+    <!-- 코스피 -->
     <div class="card">
       <div class="card-header">
-        <div><div class="card-title">코스피</div><div class="card-sub">KOSPI · 한국 대형주</div></div>
+        <div><div class="card-title">코스피</div><div class="card-sub">KRXKOSPI:KOSPI · 한국 대형주</div></div>
         <span class="card-badge">KRX</span>
       </div>
       <div class="card-body">
         <div class="widget-wrap">
-          <iframe src="https://ssltvc.investing.com/?pair_ID=179029&height=260&width=100%25&period=900&ticks=false&layout=dark&theme=dark&interval=D&candleType=area&lang=12"
-            frameborder="0" scrolling="no" style="width:100%;height:260px;border:0;"></iframe>
+          <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+            {"symbol":"KRXKOSPI:KOSPI","width":"100%","height":"100%","locale":"kr","dateRange":"12M","colorTheme":"dark","isTransparent":true,"autosize":true}
+            </script>
+          </div>
         </div>
         <div class="dd-panel">
           <span class="dd-label">전고점 대비 낙폭</span>
@@ -288,16 +292,20 @@ footer a{color:var(--text2);text-decoration:none;}
       </div>
     </div>
 
-    <!-- 코스닥 - investing.com widget -->
+    <!-- 코스닥 -->
     <div class="card">
       <div class="card-header">
-        <div><div class="card-title">코스닥</div><div class="card-sub">KOSDAQ · 한국 성장주</div></div>
+        <div><div class="card-title">코스닥</div><div class="card-sub">KRXKOSDAQ:KOSDAQ · 한국 성장주</div></div>
         <span class="card-badge">KRX</span>
       </div>
       <div class="card-body">
         <div class="widget-wrap">
-          <iframe src="https://ssltvc.investing.com/?pair_ID=179032&height=260&width=100%25&period=900&ticks=false&layout=dark&theme=dark&interval=D&candleType=area&lang=12"
-            frameborder="0" scrolling="no" style="width:100%;height:260px;border:0;"></iframe>
+          <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+            {"symbol":"KRXKOSDAQ:KOSDAQ","width":"100%","height":"100%","locale":"kr","dateRange":"12M","colorTheme":"dark","isTransparent":true,"autosize":true}
+            </script>
+          </div>
         </div>
         <div class="dd-panel">
           <span class="dd-label">전고점 대비 낙폭</span>
