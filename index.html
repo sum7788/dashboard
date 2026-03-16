@@ -150,7 +150,7 @@
     <div class="tradingview-widget-container" style="height:60px">
       <div class="tradingview-widget-container__widget"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-      {"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"NASDAQ:QQQ","title":"나스닥100"},{"proName":"PEPPERSTONE:GOLD","title":"금"},{"proName":"BITSTAMP:BTCUSD","title":"BTC"},{"proName":"KRX:KOSPI","title":"코스피"},{"proName":"KRX:KOSDAQ","title":"코스닥"},{"proName":"FX:USDKRW","title":"원달러"}],"showSymbolLogo":true,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"kr"}
+      {"symbols":[{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"NASDAQ:QQQ","title":"나스닥100"},{"proName":"PEPPERSTONE:GOLD","title":"금"},{"proName":"BITSTAMP:BTCUSD","title":"BTC"},{"proName":"PEPPERSTONE:KOSPIX","title":"코스피"},{"proName":"PEPPERSTONE:KOSDAQX","title":"코스닥"},{"proName":"FX:USDKRW","title":"원달러"}],"showSymbolLogo":true,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"kr"}
       </script>
     </div>
   </div>
@@ -278,7 +278,7 @@
       <!-- 코스피 -->
       <div class="card">
         <div class="card-header">
-          <div><div class="card-title">코스피</div><div class="card-sub">KRX:KOSPI · 한국 대형주</div></div>
+          <div><div class="card-title">코스피</div><div class="card-sub">INDEX:KOSPI · 한국 대형주</div></div>
           <span class="card-badge">KRX</span>
         </div>
         <div class="card-body">
@@ -286,7 +286,7 @@
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-              {"symbol":"KRX:KOSPI","width":"100%","height":"100%","locale":"kr","dateRange":"12M","colorTheme":"dark","isTransparent":true,"autosize":true}
+              {"symbol":"INDEX:KOSPI","width":"100%","height":"100%","locale":"kr","dateRange":"12M","colorTheme":"dark","isTransparent":true,"autosize":true}
               </script>
             </div>
           </div>
@@ -302,7 +302,7 @@
       <!-- 코스닥 -->
       <div class="card">
         <div class="card-header">
-          <div><div class="card-title">코스닥</div><div class="card-sub">KRX:KOSDAQ · 한국 성장주</div></div>
+          <div><div class="card-title">코스닥</div><div class="card-sub">INDEX:KOSDAQ · 한국 성장주</div></div>
           <span class="card-badge">KRX</span>
         </div>
         <div class="card-body">
@@ -310,7 +310,7 @@
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-              {"symbol":"KRX:KOSDAQ","width":"100%","height":"100%","locale":"kr","dateRange":"12M","colorTheme":"dark","isTransparent":true,"autosize":true}
+              {"symbol":"INDEX:KOSDAQ","width":"100%","height":"100%","locale":"kr","dateRange":"12M","colorTheme":"dark","isTransparent":true,"autosize":true}
               </script>
             </div>
           </div>
@@ -413,7 +413,7 @@
           <div class="tradingview-widget-container" style="height:100%">
             <div class="tradingview-widget-container__widget" style="height:100%"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-            {"colorTheme":"dark","dateRange":"12M","showChart":true,"locale":"kr","largeChartUrl":"","isTransparent":true,"showSymbolLogo":true,"showFloatingTooltip":false,"width":"100%","height":"100%","tabs":[{"title":"지수","symbols":[{"s":"FOREXCOM:SPXUSD","d":"S&P 500"},{"s":"NASDAQ:QQQ","d":"나스닥 100(QQQ)"},{"s":"KRX:KOSPI","d":"코스피"},{"s":"KRX:KOSDAQ","d":"코스닥"},{"s":"PEPPERSTONE:GOLD","d":"금"},{"s":"BITSTAMP:BTCUSD","d":"비트코인"}],"originalTitle":"Indices"},{"title":"FX / 매크로","symbols":[{"s":"FX:USDKRW","d":"원달러"},{"s":"TVC:DXY","d":"달러인덱스"},{"s":"FX:USDJPY","d":"달러엔"},{"s":"TVC:US10Y","d":"미국10년물"},{"s":"NYMEX:CL1!","d":"WTI 원유"}],"originalTitle":"FX"}]}
+            {"colorTheme":"dark","dateRange":"12M","showChart":true,"locale":"kr","largeChartUrl":"","isTransparent":true,"showSymbolLogo":true,"showFloatingTooltip":false,"width":"100%","height":"100%","tabs":[{"title":"지수","symbols":[{"s":"FOREXCOM:SPXUSD","d":"S&P 500"},{"s":"NASDAQ:QQQ","d":"나스닥 100(QQQ)"},{"s":"PEPPERSTONE:KOSPIX","d":"코스피"},{"s":"PEPPERSTONE:KOSDAQX","d":"코스닥"},{"s":"PEPPERSTONE:GOLD","d":"금"},{"s":"BITSTAMP:BTCUSD","d":"비트코인"}],"originalTitle":"Indices"},{"title":"FX / 매크로","symbols":[{"s":"FX:USDKRW","d":"원달러"},{"s":"TVC:DXY","d":"달러인덱스"},{"s":"FX:USDJPY","d":"달러엔"},{"s":"TVC:US10Y","d":"미국10년물"},{"s":"NYMEX:CL1!","d":"WTI 원유"}],"originalTitle":"FX"}]}
             </script>
           </div>
         </div>
@@ -452,160 +452,162 @@ const tickerItems = [
   `).join('');
 })();
 
-// ── 고점 대비 낙폭 & 나스닥 TOP10 ──
-// Yahoo Finance via multiple CORS proxies (fallback chain)
-const YF_BASE = 'https://query1.finance.yahoo.com/v8/finance/chart/';
-const PROXIES = [
-  url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-  url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
-  url => `https://thingproxy.freeboard.io/fetch/${url}`,
-];
+// ── 데이터 fetch ──
+let FH_TOKEN = localStorage.getItem('fh_key') || '';
 
-async function yahooFetch(ticker, range='2y') {
-  const target = `${YF_BASE}${encodeURIComponent(ticker)}?interval=1d&range=${range}`;
-  // Try direct first (works on Vercel deployed site)
-  try {
-    const r = await fetch(target, { signal: AbortSignal.timeout(4000) });
-    if (r.ok) { const d = await r.json(); if (d?.chart?.result) return d; }
-  } catch(_) {}
-  // Try each proxy
-  for (const makeUrl of PROXIES) {
-    try {
-      const r = await fetch(makeUrl(target), { signal: AbortSignal.timeout(6000) });
-      if (!r.ok) continue;
-      const text = await r.text();
-      // allorigins wraps in {contents:...}
-      let parsed;
-      try { const wrap = JSON.parse(text); parsed = wrap.contents ? JSON.parse(wrap.contents) : wrap; }
-      catch(_) { continue; }
-      if (parsed?.chart?.result) return parsed;
-    } catch(_) {}
+function setApiKey() {
+  const k = prompt('🔑 Finnhub API 키 입력\n\n무료 발급: https://finnhub.io/register\n(30초, 이메일만 있으면 됩니다)', FH_TOKEN);
+  if (k && k.trim()) {
+    FH_TOKEN = k.trim();
+    localStorage.setItem('fh_key', FH_TOKEN);
+    document.getElementById('api-btn').textContent = '🔑 API키 변경';
+    document.getElementById('api-btn').style.background = '#1e2535';
+    renderDrawdowns();
+    renderNdxTable();
   }
-  return null;
 }
 
-const ddAssets = [
-  {id:'sp500', ticker:'^GSPC', label:'S&P 500'},
-  {id:'ndx',   ticker:'^NDX',  label:'나스닥100'},
-  {id:'gold',  ticker:'GC=F',  label:'금'},
-  {id:'btc',   ticker:'BTC-USD',label:'비트코인'},
-  {id:'kospi', ticker:'^KS11', label:'코스피'},
-  {id:'kosdaq',ticker:'^KQ11', label:'코스닥'},
-  {id:'krw',   ticker:'KRW=X', label:'원달러'},
-];
+window.addEventListener('DOMContentLoaded', () => {
+  const btn = document.createElement('button');
+  btn.id = 'api-btn';
+  btn.textContent = FH_TOKEN ? '🔑 API키 변경' : '🔑 데이터 활성화';
+  Object.assign(btn.style, {
+    position:'fixed', bottom:'20px', right:'20px', zIndex:'9999',
+    background: FH_TOKEN ? '#1e2535' : '#ef4444',
+    color:'#fff', border:'1px solid #2a3347',
+    padding:'10px 16px', borderRadius:'8px',
+    fontFamily:'IBM Plex Mono,monospace', fontSize:'12px',
+    cursor:'pointer', boxShadow:'0 4px 12px rgba(0,0,0,.5)'
+  });
+  btn.onclick = setApiKey;
+  document.body.appendChild(btn);
+});
 
-function ddClass(pct){ const v=Math.abs(pct); return v<5?'ok':v<20?'warn':'danger'; }
-function ddStatusText(pct){ const v=Math.abs(pct); return v<5?'🏔️ 강세장':v<10?'⚠️ 주의':v<20?'⚠️ 조정':'🐻 약세장'; }
-
-async function fetchDrawdown(ticker) {
-  const d = await yahooFetch(ticker, '2y');
-  if (!d) return null;
+async function fhFetch(url) {
+  // Finnhub supports CORS natively — no proxy needed
+  if (!FH_TOKEN) return null;
   try {
-    const closes = d.chart.result[0].indicators.quote[0].close.filter(v => v != null);
-    if (!closes.length) return null;
-    const cur = closes[closes.length-1];
-    const peak = Math.max(...closes);
-    return { current: cur, peak, drawdown: ((cur-peak)/peak)*100 };
+    const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
+    if (!r.ok) return null;
+    return await r.json();
   } catch(_) { return null; }
 }
 
-async function renderDrawdowns(){
-  for(const a of ddAssets){
-    const data = await fetchDrawdown(a.ticker);
+async function getQuote(sym) {
+  return fhFetch(`https://finnhub.io/api/v1/quote?symbol=${sym}&token=${FH_TOKEN}`);
+}
+async function get52w(sym) {
+  const d = await fhFetch(`https://finnhub.io/api/v1/stock/metric?symbol=${sym}&metric=all&token=${FH_TOKEN}`);
+  return d?.metric || null;
+}
+
+// ATH 낙폭 설정
+const ddAssets = [
+  {id:'sp500',  sym:'SPY',  label:'S&P 500',   note:'SPY ETF'},
+  {id:'ndx',    sym:'QQQ',  label:'나스닥100',  note:'QQQ ETF'},
+  {id:'gold',   sym:'GLD',  label:'금',         note:'GLD ETF'},
+  {id:'btc',    sym:'COINBASE:BTCUSD', label:'비트코인', note:'Coinbase'},
+  {id:'kospi',  sym:'EWY',  label:'코스피',     note:'EWY ETF'},
+  {id:'kosdaq', sym:'FLKR', label:'코스닥',     note:'FLKR ETF'},
+  {id:'krw',    sym:'USDJPY',label:'원달러',    note:'USD/KRW'},
+];
+
+function ddClass(p){ return Math.abs(p)<5?'ok':Math.abs(p)<20?'warn':'danger'; }
+function ddStatusText(p){ return Math.abs(p)<5?'🏔️ 강세장':Math.abs(p)<10?'⚠️ 주의':Math.abs(p)<20?'⚠️ 조정':'🐻 약세장'; }
+
+async function renderDrawdowns() {
+  if (!FH_TOKEN) {
+    ddAssets.forEach(a => {
+      document.getElementById(`dd-val-${a.id}`).textContent = '키 필요';
+      document.getElementById(`dd-stat-${a.id}`).textContent = '우하단 버튼 클릭';
+    });
+    return;
+  }
+  for (const a of ddAssets) {
     const valEl = document.getElementById(`dd-val-${a.id}`);
     const barEl = document.getElementById(`dd-bar-${a.id}`);
     const statEl = document.getElementById(`dd-stat-${a.id}`);
-    if(!data){
-      valEl.textContent='N/A'; valEl.className='dd-value warn';
-      barEl.style.width='0%'; statEl.textContent='데이터없음';
-      continue;
-    }
-    const pct = data.drawdown;
-    const cls = ddClass(pct);
-    valEl.textContent = pct.toFixed(2)+'%';
-    valEl.className = `dd-value ${cls}`;
-    barEl.className = `dd-bar ${cls}`;
-    barEl.style.width = Math.min(100, Math.abs(pct)/30*100)+'%';
-    statEl.textContent = ddStatusText(pct);
+    try {
+      const [q, m] = await Promise.all([getQuote(a.sym), get52w(a.sym)]);
+      if (!q || !q.c || !m) { valEl.textContent='N/A'; statEl.textContent=a.note; continue; }
+      const high52 = m['52WeekHigh'];
+      if (!high52) { valEl.textContent='N/A'; statEl.textContent=a.note; continue; }
+      const pct = ((q.c - high52) / high52) * 100;
+      const cls = ddClass(pct);
+      valEl.textContent = pct.toFixed(2) + '%';
+      valEl.className = `dd-value ${cls}`;
+      barEl.className = `dd-bar ${cls}`;
+      barEl.style.width = Math.min(100, Math.abs(pct)/30*100) + '%';
+      statEl.textContent = ddStatusText(pct);
+    } catch(_) { valEl.textContent='N/A'; statEl.textContent=a.note; }
   }
 }
 renderDrawdowns();
 
-// ── 나스닥100 TOP10 테이블 ──
+// 나스닥100 TOP10
 const NDX_TOP10 = [
-  {rank:1,  sym:'MSFT',  name:'마이크로소프트',   ticker:'MSFT'},
-  {rank:2,  sym:'AAPL',  name:'애플',             ticker:'AAPL'},
-  {rank:3,  sym:'NVDA',  name:'엔비디아',         ticker:'NVDA'},
-  {rank:4,  sym:'AMZN',  name:'아마존',           ticker:'AMZN'},
-  {rank:5,  sym:'META',  name:'메타',             ticker:'META'},
-  {rank:6,  sym:'GOOGL', name:'알파벳 A',         ticker:'GOOGL'},
-  {rank:7,  sym:'TSLA',  name:'테슬라',           ticker:'TSLA'},
-  {rank:8,  sym:'AVGO',  name:'브로드컴',         ticker:'AVGO'},
-  {rank:9,  sym:'COST',  name:'코스트코',         ticker:'COST'},
-  {rank:10, sym:'NFLX',  name:'넷플릭스',         ticker:'NFLX'},
+  {rank:1,sym:'MSFT',name:'마이크로소프트'},
+  {rank:2,sym:'AAPL',name:'애플'},
+  {rank:3,sym:'NVDA',name:'엔비디아'},
+  {rank:4,sym:'AMZN',name:'아마존'},
+  {rank:5,sym:'META',name:'메타'},
+  {rank:6,sym:'GOOGL',name:'알파벳 A'},
+  {rank:7,sym:'TSLA',name:'테슬라'},
+  {rank:8,sym:'AVGO',name:'브로드컴'},
+  {rank:9,sym:'COST',name:'코스트코'},
+  {rank:10,sym:'NFLX',name:'넷플릭스'},
 ];
 
-async function fetchNdxQuote(ticker){
-  try {
-    const d = await yahooFetch(ticker, '1y');
-    if (!d) return null;
-    {
-    const res=d.chart.result[0];
-    const meta=res.meta;
-    const quote=res.indicators.quote[0];
-    const closes=quote.close.filter(v=>v!=null);
-    const cur=meta.regularMarketPrice || closes[closes.length-1];
-    const prev=meta.chartPreviousClose || closes[closes.length-2];
-    const chgPct=((cur-prev)/prev)*100;
-    const low52=meta.fiftyTwoWeekLow || Math.min(...closes);
-    const high52=meta.fiftyTwoWeekHigh || Math.max(...closes);
-    const pos52=((cur-low52)/(high52-low52))*100;
-    return {cur,chgPct,low52,high52,pos52};
-    }
-  } catch(e){return null;}
-}
+async function renderNdxTable() {
+  const tbody = document.getElementById('ndx-tbody');
+  if (!FH_TOKEN) {
+    tbody.innerHTML = `<tr><td colspan="6" style="padding:32px;text-align:center;color:var(--text3);font-family:var(--mono);font-size:12px;">
+      🔑 우하단의 <strong style="color:var(--red)">"데이터 활성화"</strong> 버튼을 눌러 API 키를 입력해주세요
+    </td></tr>`;
+    return;
+  }
+  tbody.innerHTML = '<tr><td colspan="6" style="padding:24px;text-align:center;color:var(--text3);font-family:var(--mono);font-size:12px;">로딩 중...</td></tr>';
 
-async function renderNdxTable(){
-  const tbody=document.getElementById('ndx-tbody');
-  tbody.innerHTML='<tr><td colspan="6" style="padding:24px;text-align:center;color:var(--text3);font-family:var(--mono);font-size:12px;">데이터 로딩 중...</td></tr>';
-  const results=await Promise.all(NDX_TOP10.map(s=>fetchNdxQuote(s.ticker)));
-  let html='';
-  NDX_TOP10.forEach((s,i)=>{
-    const d=results[i];
-    if(!d){
-      html+=`<tr>
-        <td style="color:var(--text3);font-family:var(--mono);font-size:11px">${s.rank}</td>
+  const results = await Promise.all(
+    NDX_TOP10.map(s => Promise.all([getQuote(s.sym), get52w(s.sym)]))
+  );
+
+  let html = '';
+  NDX_TOP10.forEach((s, i) => {
+    const [q, m] = results[i];
+    if (!q || !q.c) {
+      html += `<tr><td style="color:var(--text3);font-family:var(--mono);font-size:11px">${s.rank}</td>
         <td><div class="ndx-sym">${s.sym}</div><div class="ndx-name">${s.name}</div></td>
-        <td class="r" colspan="4" style="color:var(--text3);font-size:11px">데이터없음</td>
-      </tr>`;
+        <td class="r" colspan="4" style="color:var(--text3);font-size:11px">로딩 실패</td></tr>`;
       return;
     }
-    const up=d.chgPct>=0;
-    const chgCls=up?'up':'dn';
-    const chgSign=up?'+':'';
-    const cur=d.cur>=1000?d.cur.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):d.cur.toFixed(2);
-    const lo=d.low52>=1000?d.low52.toLocaleString('en-US',{maximumFractionDigits:0}):d.low52.toFixed(0);
-    const hi=d.high52>=1000?d.high52.toLocaleString('en-US',{maximumFractionDigits:0}):d.high52.toFixed(0);
-    const barColor=up?'var(--green)':'var(--red)';
-    const pos=Math.max(0,Math.min(100,d.pos52));
-    html+=`<tr>
+    const up = q.dp >= 0;
+    const cur = q.c >= 1000 ? q.c.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) : q.c.toFixed(2);
+    const lo = m?.['52WeekLow'] || 0;
+    const hi = m?.['52WeekHigh'] || 0;
+    const loStr = lo >= 1000 ? lo.toLocaleString('en-US',{maximumFractionDigits:0}) : lo.toFixed(0);
+    const hiStr = hi >= 1000 ? hi.toLocaleString('en-US',{maximumFractionDigits:0}) : hi.toFixed(0);
+    const pos = lo && hi ? Math.max(0,Math.min(100,((q.c-lo)/(hi-lo))*100)) : 50;
+    const barColor = up ? 'var(--green)' : 'var(--red)';
+    html += `<tr>
       <td style="color:var(--text3);font-family:var(--mono);font-size:11px;font-weight:600">${s.rank}</td>
       <td><div class="ndx-sym">${s.sym}</div><div class="ndx-name">${s.name}</div></td>
       <td class="r">$${cur}</td>
-      <td class="r"><span class="ndx-chg ${chgCls}">${chgSign}${d.chgPct.toFixed(2)}%</span></td>
-      <td class="r"><span style="font-family:var(--mono);font-size:10px;color:var(--text3)">$${lo} – $${hi}</span></td>
+      <td class="r"><span class="ndx-chg ${up?'up':'dn'}">${up?'+':''}${q.dp.toFixed(2)}%</span></td>
+      <td class="r"><span style="font-family:var(--mono);font-size:10px;color:var(--text3)">$${loStr} – $${hiStr}</span></td>
       <td class="ndx-bar-cell">
         <div style="position:relative;height:6px;background:var(--border);border-radius:3px;margin-bottom:3px;">
-          <div style="position:absolute;left:0;top:0;height:100%;width:${pos}%;background:${barColor};border-radius:3px;transition:width .6s;"></div>
+          <div style="position:absolute;left:0;top:0;height:100%;width:${pos}%;background:${barColor};border-radius:3px;"></div>
           <div style="position:absolute;left:${pos}%;top:-2px;width:2px;height:10px;background:#fff;border-radius:1px;transform:translateX(-50%);"></div>
         </div>
         <div style="font-family:var(--mono);font-size:9px;color:var(--text3);text-align:right">${pos.toFixed(0)}%</div>
       </td>
     </tr>`;
   });
-  tbody.innerHTML=html;
-  const now=new Date();
-  document.getElementById('ndx-update-time').textContent=now.toLocaleTimeString('ko-KR',{timeZone:'Asia/Seoul',hour:'2-digit',minute:'2-digit'})+' KST';
+  tbody.innerHTML = html;
+  const now = new Date();
+  document.getElementById('ndx-update-time').textContent =
+    now.toLocaleTimeString('ko-KR',{timeZone:'Asia/Seoul',hour:'2-digit',minute:'2-digit'}) + ' KST';
 }
 renderNdxTable();
 setInterval(renderNdxTable, 60000);
